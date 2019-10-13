@@ -20,47 +20,58 @@ import javax.swing.JOptionPane;
  */
 public class metoBurbuja {
     public static void main(String[] args) {
+    //ingresa datos por teclado
         Scanner entrada = new Scanner(System.in);
-    
-        int vector [];
+        
+        //definicion de variables
+        int vector[];
+        int x;
         int nElem;
-        int aux;
         
-        nElem = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el "
-                + "numero de elementos para el vector"));
+        //ingresamos tamaño de vector por pop up
+        System.out.println("Ingrese el numero elementos para el vector");        
+        nElem=entrada.nextInt();
         
-        vector = new int[nElem];
+        //vector
+        vector=new int[nElem];
         
+        //llenado de vector
         for (int i = 0; i < nElem; i++) {
-            System.out.println((i+1)+". Digite un numero");
-            vector [i] = entrada.nextInt();
+            System.out.println("Ingrese el numero "+ (i+1));
+            vector[i]=entrada.nextInt();
         }
         
-        //mostramos el vector como se ingreso
+        //vector en el orden ingresado
         System.out.println("Vector en el orden ingresado");
         for (int i = 0; i < nElem; i++) {
             System.out.println(vector[i]);
         }
         
+        //contador
+        x=nElem-2;
+        
         //metodo burbuja
-        for (int i = 0; i < (nElem-1); i++) {
-            for (int j = 0; j < (nElem-1); j++) {
-                if (vector [j] > vector[j+1]) { //si numeroActual > numero siguiente
-                    aux = vector[j];
-                    vector[j] = vector[j+1];
-                    vector[j+1] = aux;
+        for (int i = 0; i < nElem; i++) {
+            for (int j = 0; j < x; j++) {
+                if (vector[j]>vector[j+1]) {
+                    int aux=vector[j];
+                    vector[j]=vector[j+1];
+                    vector[j+1]=aux;
                 }
             }
+            
+            //contador
+            x=nElem-1;
         }
         
-        //mostramos el arreglo ardenado ascendente
-        System.out.println("Vector ordenado ascendente");
+        //mostrar vector ordenado en forma ascendente
+        System.out.println("Vector ordenado en forma ascendente");
         for (int i = 0; i < nElem; i++) {
             System.out.println(vector[i]);
         }
         
-        //mostramos arreglo en forma desendente
-        System.out.println("Vector ordenado desendente");
+        //mostrar vector ordenado en forma descendente
+        System.out.println("Vector ordenado en forma descendente");
         for (int i = (nElem-1); i >= 0; i--) {
             System.out.println(vector[i]);
         }
